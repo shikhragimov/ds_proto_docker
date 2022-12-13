@@ -2,13 +2,14 @@
 version: "0.1.0"
 
 networks:
-    ds_project_network:
+  ds_project_network:
+    name: ${ds_project}_network
 
 services:
   ds_project:
     build:
         context: .
-    container_name: ds_project_container
+    container_name: ${ds_project}_container
     ports:
         - 8888:8888 # for jupyterlab
         - 6006:6006 # for tensorboard
@@ -16,8 +17,9 @@ services:
     networks:
         - ds_project_network # if you add another services in this container (f.e. database) they could be in one network
     volumes:
-        - ../code:/app # use your own path to code
-        - ../data:/app/data # use your own path to data
+        - ${path_to_code}:/home/${USER}/app # use your own path to code
+        - ${path_to_data}:/home/${USER}/app/data # use your own path to data
+#    command: jupyter lab --notebook-dir=/home/${USER}/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root
     deploy:
       resources:
         reservations:

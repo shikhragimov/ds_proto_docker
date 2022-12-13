@@ -1,6 +1,7 @@
 ###########################################################################################
 ### NVIDIA PART ###########################################################################
 FROM tensorflow/tensorflow:latest-gpu
+# FROM pytorch/pytorch:latest
 MAINTAINER Marat Shikhragimov
 ARG USER
 
@@ -11,19 +12,14 @@ RUN ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 
 ###########################################################################################
 ### USER PART #################################################################################
-RUN apt-get install sudo
-
 RUN adduser --disabled-password --gecos '' ${USER}
 RUN adduser ${USER} sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-USER ${USER}
-WORKDIR home/${USER}/app
-
 ###########################################################################################
 ### JUPYTER ###############################################################################
 # install jupyterlab
-RUN pip3 install jupyterlab virtualenv
+RUN pip install jupyterlab virtualenv
 
 # jupyterlab extensions
 RUN pip install jupyterlab-drawio
@@ -33,7 +29,10 @@ RUN pip install jupyterlab_latex
 ### OTHER #################################################################################
 # install requirements
 # we added this part here, because it's the most changable part
-COPY requirements.txt home/${USER}/app/requirements.txt
-RUN pip install -r home/${USER}/app/requirements.txt
+#COPY requirements.txt home/${USER}/app/requirements.txt
+#RUN pip install -r home/${USER}/app/requirements.txt
+USER ${USER}
+WORKDIR home/${USER}/app
 
-CMD ["bash", "-c", "jupyter lab --notebook-dir=/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root"]
+#CMD jupyter lab --notebook-dir=~/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+CMD ["bash", "-c", "jupyter lab --notebook-dir=~/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root"]
