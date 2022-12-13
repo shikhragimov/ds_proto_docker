@@ -9,7 +9,7 @@ Here it is assumed you are using nvidia card which supported latest CUDA.
 Consider other options NGC containers f.e. for [pytorch](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) and for [tensorflow](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow). 
 These containers are significantly larger (compressed sizes 7 GB and 8 GB as for Dec 13 2022).
 
-## Prerequisites:
+## Prerequisites
 From [tensorflow official documentation](https://www.tensorflow.org/install/docker), however the same are for pytoch.
 
 * Install the [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md?utm_source=www.tensorflow.org&utm_medium=referral#quickstart) to add NVIDIA® GPU support to Docker. nvidia-container-runtime is only available for Linux. See the `nvidia-container-runtime` platform [support FAQ](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions?utm_source=www.tensorflow.org&utm_medium=referral#platform-support) for details.
@@ -21,15 +21,14 @@ From [tensorflow official documentation](https://www.tensorflow.org/install/dock
     ```bash 
     docker run --gpus all --rm nvidia/cuda nvidia-smi
     ```
-
 ## Running
 ### Case 1 - using only Docker
 You will get most basic docker image and container. 
 It is sufficient for work with notebooks and also with tensorboard 
 (you will need start in manually, port for it `6006`).
 Also, you could add extra port if you know that you need extra port for service (additional `-p xxxx:xxxx`).
-Replace `ds_project` with your project_name. Postfix image refers to docker image and postfix container refers to container
-
+* Replace `ds_project` with your project_name. Postfix image refers to docker image and postfix container refers to container
+* You could swith between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [Dockerfile](Dockerfile)
 To keep container clear and free of data and datasets, mount data as external volume. Same as code.
 ```bash  
 cd /path/to/project
