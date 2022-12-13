@@ -34,5 +34,4 @@ RUN pip install jupyterlab_latex
 USER ${USER}
 WORKDIR home/${USER}/app
 
-#CMD jupyter lab --notebook-dir=~/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root
 CMD ["bash", "-c", "jupyter lab --notebook-dir=~/app --ip 0.0.0.0 --port 8888 --no-browser --allow-root"]
