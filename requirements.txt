@@ -1,0 +1,8 @@
+# check packages and remove unnecessary.
+# package didn't freeze, so consider an option to pip freeze and specify version
+numpy
+pandas
+tqdm
+networkx
+matplotlib
+

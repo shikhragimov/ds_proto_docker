@@ -1,0 +1,28 @@
+---
+version: "0.1.0"
+
+networks:
+    ds_project_network:
+
+services:
+  ds_project:
+    build:
+        context: .
+    container_name: ds_project_container
+    ports:
+        - 8888:8888 # for jupyterlab
+        - 6006:6006 # for tensorboard
+        - 9001:9001 # for service inside container
+    networks:
+        - ds_project_network # if you add another services in this container (f.e. database) they could be in one network
+    volumes:
+        - ../code:/app # use your own path to code
+        - ../data:/app/data # use your own path to data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+#              count: 1 # you could specify number of GPU to use
+#              device_ids: ['0', '3'] # you could specify ids of GPU to use
+              capabilities: [gpu]
