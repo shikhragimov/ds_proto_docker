@@ -15,21 +15,21 @@ https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining)
 
 ### Phases of CRISP-ML
 1. **Business Understanding**. Roles: Business Analyst, Data Scientist
-    1. **Determine business objectives**. Create List of Оbjectives 
+    1. **Determine business objectives**. Create List of Objectives 
     2. **Assess situation** It means lookup all resources, assess risks, 
     assess return value, understand requirements, assumptions, constraints
     3. **Determine model's goals** 
     4. **Determine initial data** 
     5. **Produce project plan**. Here should be created projects page with all phases described here. 
-    Also it should be decided: 
+    Also, it should be decided: 
         1. which initial models and algorithms should be, 
         2. whether one should use supervised, unsupervised, reinforcement learning  
         3. what will be an input and output data
 2. **Data Understanding** (Working with Raw Data). Roles: Business Analyst, Data Engineer, Data Scientist
     1. **Collect initial data**
-    2. **Describe data** (use notebooks, text editors etc, use pandas carefully cause it is to "heavy"). 
+    2. **Describe data** (use notebooks, text editors etc., use pandas carefully because it is to "heavy"). 
     The result is Initial Data Specification
-    3. **Explore data** (use notebooks, text editors etc, use pandas carefully cause it is to "heavy", 
+    3. **Explore data** (use notebooks, text editors etc/, use pandas carefully because it is to "heavy", 
     make visualisation and descriptive statistics)
     4. **Select data from third party sources** (External Data)
     5. **Verify data**
@@ -55,7 +55,7 @@ https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining)
     1. **Evaluate result**
     2. **Review process**
     3. **Determine next steps**: should we go to deployment or go again to Business Understanding.
-    You should check List of Оbjectives
+    You should check List of Objectives
 6. **Deployment**. Roles: DevOps, Data Engineer, Data Scientist
     1. **Plan deployment**
     2. **Plan monitoring and maintenance**
@@ -139,8 +139,8 @@ or `workers/queue_manager.py` for Celery + RabbitMQ)
 ## Deployment Tips
 
 * **Data**
-    * Save metadata in in-memory database like Redis, but ensure consistensy 
-    * Save processed data in Databases, but ensure consistensy  
+    * Save metadata in in-memory database like Redis, but ensure consistency 
+    * Save processed data in Databases, but ensure consistency  
     * Save working statistics into Database
 * **Model**
     * save checkpoints and model

@@ -10,14 +10,14 @@ Consider other options NGC containers f.e. for [pytorch](https://catalog.ngc.nvi
 These containers are significantly larger (compressed sizes 7 GB and 8 GB as for Dec 13 2022).
 
 ## Prerequisites
-From [tensorflow official documentation](https://www.tensorflow.org/install/docker), however the same are for pytoch.
+From [tensorflow official documentation](https://www.tensorflow.org/install/docker), however the same are for pytorch.
 
-* Install the [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md?utm_source=www.tensorflow.org&utm_medium=referral#quickstart) to add NVIDIA® GPU support to Docker. nvidia-container-runtime is only available for Linux. See the `nvidia-container-runtime` platform [support FAQ](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions?utm_source=www.tensorflow.org&utm_medium=referral#platform-support) for details.
-* Check if a GPU is available:
+1. Install the [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md?utm_source=www.tensorflow.org&utm_medium=referral#quickstart) to add NVIDIA® GPU support to Docker. nvidia-container-runtime is only available for Linux. See the `nvidia-container-runtime` platform [support FAQ](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions?utm_source=www.tensorflow.org&utm_medium=referral#platform-support) for details.
+2. Check if a GPU is available:
     ```bash 
     lspci | grep -i nvidia
     ```
-* Verify your nvidia-docker installation:
+3. Verify your nvidia-docker installation:
     ```bash 
     docker run --gpus all --rm nvidia/cuda nvidia-smi
     ```
@@ -28,7 +28,7 @@ It is sufficient for work with notebooks and also with tensorboard
 (you will need start in manually, port for it `6006`).
 Also, you could add extra port if you know that you need extra port for service (additional `-p xxxx:xxxx`).
 * Replace `ds_project` with your project_name. Postfix image refers to docker image and postfix container refers to container
-* You could swith between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [Dockerfile](Dockerfile)
+* You could switch between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [Dockerfile](Dockerfile)
 To keep container clear and free of data and datasets, mount data as external volume. Same as code.
 ```bash  
 cd /path/to/project
@@ -43,15 +43,17 @@ some notes:
 
 ### Case 2 - using docker-compose
 Here there is much more option. You could add several containers to the same network (here `ds_project_network`). Please look at `docker-compose.yml`, there are some comments for better understanding.
-
-Build image
-```bash
-docker compose build --build-arg USER=$(whoami)
-```
-Run container
-```bash
-docker compose up
-```
+* You could switch between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [Dockerfile](Dockerfile)
+* look at `.env` file and place your own settings
+1. Build image
+    ```bash
+    cd /path/to/project
+    docker compose build --build-arg USER=$(whoami)
+    ```
+2. Run container
+    ```bash
+    docker compose up
+    ```
 
 ## Usage (Post installation)
 1. Enter the shell of created container
@@ -67,5 +69,5 @@ docker compose up
 
 
 ## TODO
-* add docker-compose
+Nearest to do list
 * add rapids.ai
