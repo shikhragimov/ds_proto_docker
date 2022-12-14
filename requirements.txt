@@ -1,8 +1,9 @@
 # check packages and remove unnecessary.
 # package didn't freeze, so consider an option to pip freeze and specify version
-networkx
-numpy
-pandas
-tqdm
-matplotlib
-
+networkx # library for working with graphs
+numpy # NumPy offers comprehensive mathematical functions, random number generators, linear algebra routines, Fourier transforms, and more.
+pandas # pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language
+tqdm # A Fast, Extensible Progress Bar for Python and CLI
+matplotlib # Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python
+fastapi # FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints
+pydot # an interface to Graphviz; can parse and dump into the DOT language used by GraphViz,; is written in pure Python,

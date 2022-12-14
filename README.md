@@ -23,6 +23,8 @@ From [tensorflow official documentation](https://www.tensorflow.org/install/dock
     docker run --gpus all --rm nvidia/cuda nvidia-smi
     ```
 ## Running
+### Prerunning
+Review [`requirements.txt`](requirements.txt) file, here you can add or remove pip packages, there are already several common packages. 
 ### Case 1 - using only Docker
 You will get most basic docker image and container. 
 It is sufficient for work with notebooks and also with tensorboard 
@@ -74,3 +76,5 @@ Here there are much more option. You could add several containers to the same ne
 ## TODO
 Nearest to do list
 * add rapids.ai
+* add project structure
+* add working with multiple environments
