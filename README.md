@@ -3,11 +3,12 @@ Create your working environment like venv, but deeper - in docker container.
 
 **Not for production usage!**
 
-In such case you can install different versions f.e. of CUDA. And also it's a very simple approach, just configure files and run containers.
-Here it is assumed you are using nvidia card which supported latest CUDA.
+## Motivation
+In such case you can install different versions f.e. of CUDA. And also it's a very simple approach, just configure files and run containers. Also using volumes it could be well organising concept of container as an environment, where code and data don't belong to container, but are accessible through volumes.
+Here it is assumed you are using nvidia card which supported latest CUDA. 
 
-Consider other options NGC containers f.e. for [pytorch](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) and for [tensorflow](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow). 
-These containers are significantly larger (compressed sizes 7 GB and 8 GB as for Dec 13 2022).
+Consider other options like NGC containers f.e. for [pytorch](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) and for [tensorflow](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow). 
+Compared to this project, these containers are significantly larger (compressed sizes 7 GB and 8 GB as for Dec 13 2022).
 
 ## Prerequisites
 From [tensorflow official documentation](https://www.tensorflow.org/install/docker), however the same are for pytorch.
@@ -42,9 +43,11 @@ some notes:
   * other port (not included in command) - consider some port as a port of service if you will do it inside this container
 
 ### Case 2 - using docker-compose
-Here there is much more option. You could add several containers to the same network (here `ds_project_network`). Please look at `docker-compose.yml`, there are some comments for better understanding.
+Here there are much more option. You could add several containers to the same network (here `ds_project_network`). Please look at [`docker-compose.yml`](docker-compose.yml), there are some comments for better understanding.
+* You could switch between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [`Dockerfile`](Dockerfile)
+* look at [`.env`](.env) file and place your own settings
 * You could switch between tensorflow and pytorch by commenting and uncommenting lines 3 and 4 in [Dockerfile](Dockerfile)
-* look at `.env` file and place your own settings
+
 1. Build image
     ```bash
     cd /path/to/project
@@ -56,17 +59,17 @@ Here there is much more option. You could add several containers to the same net
     ```
 
 ## Usage (Post installation)
-1. Enter the shell of created container
+1. After running container you will see in bash url of created jupyter lab instance, just follow this url and access your jupyter lab
+2. Enter the shell of created container
     ```bash
     docker exec -it ds_project_container bash
     ```
-2. enter container as root user. You can log into the Docker container using the root user (ID = 0) when you use the -u option
+3. Enter container as root user. You can log into the Docker container using the root user (ID = 0) when you use the -u option
     ```bash
     docker exec -u 0 -it ds_project_container bash
     ```
    however you could just do sudo from jupyterlab terminal
-3. look at the template of the [methodology](methodology.md) of DS project
-
+4. Look at the template of the [methodology](methodology.md) of DS project
 
 ## TODO
 Nearest to do list
